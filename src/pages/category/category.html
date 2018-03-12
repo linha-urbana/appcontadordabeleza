@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>{{ categoria?.nome }}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <ion-grid>
+
+    <ion-row>
+      <ion-col text-center *ngFor="let cat of subcategorias; index as i;" col-md-3>
+        <button ion-button icon-only round [ngClass]="'button-category'" (click)="abraArquivos(cat)" color="light">
+          <ion-icon name="{{ cat.icone }}"></ion-icon>
+        </button>
+        <h6>{{ cat.nome }}</h6>
+      </ion-col>
+    </ion-row>
+
+  </ion-grid>
+
+</ion-content>

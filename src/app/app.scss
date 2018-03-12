@@ -1,0 +1,211 @@
+// http://ionicframework.com/docs/theming/
+
+
+// App Global Sass
+// --------------------------------------------------
+// Put style rules here that you want to apply globally. These
+// styles are for the entire app and not just one component.
+// Additionally, this file can be also used as an entry point
+// to import other Sass files to be included in the output CSS.
+//
+
+@import url('https://fonts.googleapis.com/css?family=Raleway');
+
+* {
+    font-family: "Raleway", "Roboto", "Helvetica Neue", sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+    color: color($colors, cinza)!important
+}
+
+.content-md {
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+0,e5e5e5+100;White+3D */
+    background: #EFEFEF!important; /* Old browsers */
+    background: -moz-radial-gradient(center, ellipse cover, #ffffff 0%, #EFEFEF 100%)!important; /* FF3.6-15 */
+    background: -webkit-radial-gradient(center, ellipse cover, #ffffff 0%,#EFEFEF 100%)!important; /* Chrome10-25,Safari5.1-6 */
+    background: radial-gradient(ellipse at center, #ffffff 0%,#EFEFEF 100%)!important; /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#EFEFEF',GradientType=1 )!important; /* IE6-9 fallback on horizontal gradient */
+}
+.modal-wrapper {
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+.toolbar-background-md {
+    border-color: color($colors, primaryDark);
+    background: color($colors, primary);
+}
+.toolbar-title-md,
+.bar-button-default-md, 
+.bar-button-clear-md-default, 
+.bar-button-md-default {
+    color: #f4f4f4;
+}
+
+.button-category {
+    border-radius: 100px;
+    padding: 40px !important;
+    max-height: 84px;
+    max-width: 84px;
+    font-size: 3rem;
+    border: 4px solid #f2f2f2;
+    background-color: #fff;
+    color: #48baaf;
+}
+.button-category.activated {
+    background-color: color($colors, primary);
+    opacity: 1;
+}
+
+// Ícones dos botões de categoria
+ion-icon.icon.icon-md.ion-md-departamento-pessoal {
+  content: url(../assets/icon/button/departamento-pessoal.svg);
+  max-height: 35px;
+}
+ion-icon.icon.icon-md.ion-md-admissoes {
+    content: url(../assets/icon/button/admissoes.svg);
+    max-height: 35px;
+}
+ion-icon.icon.icon-md.ion-md-alvara {
+    content: url(../assets/icon/button/alvara.svg);
+    max-height: 35px;
+}
+ion-icon.icon.icon-md.ion-md-chat {
+    content: url(../assets/icon/button/chat.svg);
+    max-height: 35px;
+}
+ion-icon.icon.icon-md.ion-md-cnpj {
+    content: url(../assets/icon/button/cnpj.svg);
+    max-height: 35px;
+}
+ion-icon.icon.icon-md.ion-md-contrato-empresa {
+    content: url(../assets/icon/button/contrato-empresa.svg);
+    max-height: 35px;
+}
+ion-icon.icon.icon-md.ion-md-contrato-parceria {
+    content: url(../assets/icon/button/contrato-parceria.svg);
+    max-height: 35px;
+}
+ion-icon.icon.icon-md.ion-md-folha-pagamento {
+    content: url(../assets/icon/button/folha-pagamento.svg);
+    max-height: 35px;
+}
+ion-icon.icon.icon-md.ion-md-holerites {
+    content: url(../assets/icon/button/holerites.svg);
+    max-height: 35px;
+}
+ion-icon.icon.icon-md.ion-md-impostos {
+    content: url(../assets/icon/button/impostos.svg);
+    max-height: 35px;
+}
+ion-icon.icon.icon-md.ion-md-impostos-departamento-pessoal {
+    content: url(../assets/icon/button/impostos-departamento-pessoal.svg);
+    max-height: 35px;
+}
+ion-icon.icon.icon-md.ion-md-impostos-renda {
+    content: url(../assets/icon/button/impostos-renda.svg);
+    max-height: 35px;
+}
+ion-icon.icon.icon-md.ion-md-informacoes {
+    content: url(../assets/icon/button/informacoes.svg);
+    max-height: 35px;
+}
+ion-icon.icon.icon-md.ion-md-noticias {
+    content: url(../assets/icon/button/noticias.svg);
+    max-height: 35px;
+}
+ion-icon.icon.icon-md.ion-md-nota-fiscal {
+    content: url(../assets/icon/button/nota-fiscal.svg);
+    max-height: 35px;
+}
+ion-icon.icon.icon-md.ion-md-pasta {
+    content: url(../assets/icon/button/pasta.svg);
+    max-height: 35px;
+}
+ion-icon.icon.icon-md.ion-md-registros {
+    content: url(../assets/icon/button/registros.svg);
+    max-height: 35px;
+}
+ion-icon.icon.icon-md.ion-md-rescisoes {
+    content: url(../assets/icon/button/rescisoes.svg);
+    max-height: 35px;
+}
+ion-icon.icon.icon-md.ion-md-solicitacoes {
+    content: url(../assets/icon/button/solicitacoes.svg);
+    max-height: 35px;
+}
+ion-icon.icon.icon-md.ion-md-honorarios {
+    content: url(../assets/icon/button/honorarios.svg);
+    max-height: 35px;
+}
+
+// Top sidemneu ( Logo com informações do usuário )
+.content-sidemenu .custom-avatar  {
+    background-color: inherit;
+    box-shadow: none
+}
+.content-sidemenu .custom-avatar h3 {
+    font-size: 1.3rem;
+}
+.content-sidemenu .custom-avatar img {
+    margin-top: 10px;
+    margin-bottom: 20px;
+    max-height: 110px;
+    max-width: 100%!important;
+}
+.content-sidemenu .custom-avatar ion-icon {
+    color: color($colors, cinza)
+}
+.toolbar-sidemenu .toolbar-background-md {
+    border-color: #fafafa;
+    background: #fafafa;
+}
+.content-sidemenu .scroll-content {
+    background: #fff!important;
+}
+.content-sidemenu .scroll-content .list-md{
+    margin-top: 6px;
+}
+.content-sidemenu .item-md {
+    color: color($colors, cinza)
+}
+.content-sidemenu img {
+    max-width: 18px;
+    max-height: 18px;
+    margin-right: 15px;
+}
+.subtitle-sidemenu {
+    font-size: 1.3rem;
+    padding: 7px 16px;
+    margin-top: 25px;
+    background-color: color($colors, cinzaLight);
+}
+
+ion-title {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 0 90px 1px;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+  }
+  button.back-button.disable-hover.bar-button.bar-button-md.back-button-md.bar-button-default.bar-button-default-md.show-back-button {
+    z-index: 1;
+}
+
+jdiv.wrap_mW._show_1e._orinationRight_25._showLogo_3q,
+jdiv.button_1O {
+    display: none;
+}
+.header_3g._mobile_2H {
+    background-color: color($colors, primary)!important;
+}
+// Shared Sass variables, which can be used to adjust Ionic's
+// default Sass variables, belong in "theme/variables.scss".
+//
+// To declare rules for a specific mode, create a child rule
+// for the .md, .ios, or .wp mode classes. The mode class is
+// automatically applied to the <body> element in the app.

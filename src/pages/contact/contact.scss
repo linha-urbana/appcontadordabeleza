@@ -1,0 +1,16 @@
+page-contact {
+    .item-md, .item-ios  {
+        background: inherit;
+    }
+
+    ion-list, .form-email {
+        background: #fff;
+        border-radius: 5px;
+        border: 1px solid color($colors, cinzaLight);
+    }
+
+    hr {
+        border-bottom: 0px solid #eee;
+        width: 50%;
+    }
+}

@@ -1,0 +1,50 @@
+<ion-menu [content]="content">
+  <ion-content class="content-sidemenu">
+    <ion-toolbar class="toolbar-sidemenu">
+
+      <ion-card text-center class="custom-avatar">
+        <img src="assets/imgs/logo.svg" />
+        <hr>
+        <ion-grid>
+          <ion-row>
+            <ion-col col-8>
+              <h3 *ngIf="nomeUsuario">Olá {{ nomeUsuario }}!</h3>
+            </ion-col>
+            <ion-col col-2>
+              <ion-icon ios="ios-person" md="md-person" menuClose (click)="verPerfil()"></ion-icon>
+            </ion-col>
+            <ion-col col-2>
+              <ion-icon ios="ios-log-out" md="md-log-out" menuClose (click)="queroSair()"></ion-icon>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-card>
+
+    </ion-toolbar>
+
+    <ion-list>
+      <button menuClose ion-item *ngFor="let pagina of paginas" (click)="openPage(pagina)">
+        <img src="assets/icon/sidemenu/{{ pagina.icone }}.svg" alt="{{ pagina.title }}"> {{ pagina.title }}
+      </button>
+    </ion-list>
+    <ion-list>
+      <h6 class="subtitle-sidemenu">Utilidades para você</h6>
+      <button menuClose ion-item *ngFor="let pagina of utilidades" (click)="openPage(pagina)">
+        <img src="assets/icon/sidemenu/{{ pagina.icone }}.svg" alt="{{ pagina.title }}"> {{ pagina.title }}
+      </button>
+    </ion-list>
+    <ion-list>
+      <h6 class="subtitle-sidemenu">Informações e Contato</h6>
+      <a menuClose ion-item href="javascript:jivo_api.open();">
+        <img src="assets/icon/sidemenu/chat.svg" alt="Chat"> Chat
+      </a>
+      <button menuClose ion-item *ngFor="let pagina of links_uteis" (click)="openPage(pagina)">
+        <img src="assets/icon/sidemenu/{{ pagina.icone }}.svg" alt="{{ pagina.title }}"> {{ pagina.title }}
+      </button>
+    </ion-list>
+  </ion-content>
+
+</ion-menu>
+
+<!-- Disable swipe-to-go-back because it's poor UX to combine STGB with side menus -->
+<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>

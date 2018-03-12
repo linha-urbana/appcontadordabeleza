@@ -1,0 +1,8 @@
+{
+  "name": "app-contador-beleza",
+  "app_id": "",
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  }
+}

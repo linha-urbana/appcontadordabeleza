@@ -1,0 +1,42 @@
+page-list-documents {
+    h3 {
+
+    }
+    .item-md{
+        background-color: inherit;
+        // border-bottom: 1px solid rgb(225,225,225);
+        padding-bottom: 5px;
+        padding-top: 5px;
+    }
+    .item-md p {
+        font-size: 1.2rem;
+    }
+    .item-md ion-icon[item-start] {
+        color: color($colors, primary);
+    }
+    .item-md .ion-md-share {
+        color: color($colors, cinza);
+    }
+    .item-md .ion-md-download {
+        color: #698DCE; 
+    }
+    .item-md ion-icon[item-end] {
+        margin: 11px 8px 10px;
+    }
+
+    .action-sheets-basic-page {
+        .ion-md-share {
+          color: #ED4248;
+        }
+        .ion-md-arrow-dropright-circle {
+          color: #508AE4;
+        }
+        .ion-md-heart-outline {
+          color: #31D55F;
+        }
+        .action-sheet-cancel ion-icon,
+        .action-sheet-destructive ion-icon {
+          color: #757575;
+        }
+    }
+}

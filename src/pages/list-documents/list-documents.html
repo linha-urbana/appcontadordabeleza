@@ -1,0 +1,34 @@
+<!--
+  Generated template for the ListDocumentsPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{ categoria?.nome }}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding [ngClass]="action-sheets-basic-page">
+
+  <ion-col *ngIf="documentos && documentos.length <= 0">
+    <p text-center>Esperando por algum documento?</p>
+    <p text-center>Possui alguma necessidade?</p>
+    <button ion-button block (click)="entreContato()">Entre em contato</button>
+  </ion-col>
+  <ion-list *ngIf="documentos">
+    <ion-item *ngFor="let doc of documentos">
+      <ion-icon name="document" item-start></ion-icon>
+      <h2>
+        <strong>{{ doc.descricao }}</strong>
+      </h2>
+      <p>{{ doc.funcionarioNome }} | {{ doc.criadoEm }}</p>
+      <ion-icon ios="ios-download" md="md-download" (click)="baixarDocumento(doc)" item-end></ion-icon>
+      <ion-icon ios="ios-share" md="md-share" (click)="compartilharDocumento(doc)" item-end></ion-icon>
+    </ion-item>
+  </ion-list>
+
+</ion-content>

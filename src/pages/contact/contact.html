@@ -1,0 +1,104 @@
+<!--
+  Generated template for the ContactPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Informações Úteis</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+  <ion-grid>
+
+    <ion-row text-center>
+
+      <ion-col col-12>
+        <h5>
+          <strong>Com dúvidas? Nós temos as respostas!</strong>
+        </h5>
+        <p>Escolha sua forma de contato preferida, estamos sempre prontos para te atender!</p>
+      </ion-col>
+
+      <ion-list col-12>
+        <ion-item>
+          <ion-col col-4>
+            <ion-icon name="call"></ion-icon>
+          </ion-col>
+          <ion-col col-8>
+            (41) 3838-3838
+          </ion-col>
+        </ion-item>
+        <ion-item>
+          <ion-col col-4>
+            <ion-icon name="mail"></ion-icon>
+          </ion-col>
+          <ion-col col-8>
+            contato@contadordabeleza.com.br
+          </ion-col>
+        </ion-item>
+        <ion-item>
+          <ion-col col-4>
+            <ion-icon name="pin"></ion-icon>
+          </ion-col>
+          <ion-col col-8>
+            Rua João Zaniolo, 143
+            <br> Rebouças, Curitiba - 81200-000
+          </ion-col>
+        </ion-item>
+      </ion-list>
+
+    </ion-row>
+
+    <br>
+    <hr>
+    <br>
+
+    <ion-row>
+      <ion-col col-12 text-center>
+        <h6>
+          <strong>Envie uma mensagem pra gente!</strong>
+        </h6>
+        <p>Você também pode enviar suas dúvidas.
+          <br> Responderemos sua mensagem em até 24 horas.</p>
+      </ion-col>
+
+      <ion-col col-12 class="form-email">
+        <form #formData='ngForm' (ngSubmit)="onSubmit(formData)">
+          <ion-row align-items-center>
+            <ion-col col-md-12 text-center>
+              <ion-item>
+                <ion-label color="cinza" stacked>Qual seu nome? *</ion-label>
+                <ion-input *ngIf="usuario" type="text" [(ngModel)]="usuario.nome" name="nome" required></ion-input>
+                <ion-input *ngIf="!usuario" type="text" (ngModel)="usuario.nome" name="nome" required></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label color="cinza" stacked>Qual seu telefone?</ion-label>
+                <ion-input *ngIf="usuario" type="text" mask="(99) 99999-9999" [(ngModel)]="usuario.telefone" name="telefone"></ion-input>
+                <ion-input *ngIf="!usuario" type="text" mask="(99) 99999-9999" (ngModel)="usuario.telefone" name="telefone"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label color="cinza" stacked>Email para resposta *</ion-label>
+                <ion-input *ngIf="usuario" type="email" [(ngModel)]="usuario.email" name="email" required></ion-input>
+                <ion-input *ngIf="!usuario" type="email" (ngModel)="usuario.email" name="email" required></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label color="cinza" stacked>Como podemos ajudar? *</ion-label>
+                <ion-textarea rows="5" maxLength="500" (ngModel)="mensagem" name="mensagem" required></ion-textarea>
+              </ion-item>
+              <br>
+              <hr>
+              <button ion-button block type="submit" [disabled]="!formData.valid">Enviar</button>
+            </ion-col>
+          </ion-row>
+        </form>
+      </ion-col>
+    </ion-row>
+
+  </ion-grid>
+</ion-content>

@@ -1,0 +1,81 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Meu Perfil</ion-title>
+
+    <ion-buttons end>
+      <button ion-button icon-only (click)="editarPerfil()">
+        <ion-icon ios="ios-create" md="md-create"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+
+  <ion-list>
+
+    <ion-list-header>
+      {{ usuario?.nome }}
+    </ion-list-header>
+
+    <ion-item>
+      <ion-icon name="locate" item-start>
+      </ion-icon>
+      <ion-label>
+        {{ usuario?.endereco }}
+      </ion-label>
+    </ion-item>
+
+    <ion-item>
+      <ion-icon name="map" item-start>
+      </ion-icon>
+      <ion-label>
+        {{ getEnderecoCompleto(usuario?.bairro, usuario?.cidade, usuario?.cep) }}
+      </ion-label>
+    </ion-item>
+
+    <ion-item>
+      <ion-icon name="person" item-start>
+      </ion-icon>
+      <ion-label>
+        {{ usuario?.cpf }}
+      </ion-label>
+    </ion-item>
+
+    <ion-item>
+      <ion-icon name="ribbon" item-start>
+      </ion-icon>
+      <ion-label>
+        {{ usuario?.cnpj }}
+      </ion-label>
+    </ion-item>
+
+    <ion-item>
+      <ion-icon name="calendar" item-start>
+      </ion-icon>
+      <ion-label>
+        {{ usuario?.nascimento }}
+      </ion-label>
+    </ion-item>
+
+    <ion-item>
+      <ion-icon name="phone-portrait" item-start>
+      </ion-icon>
+      <ion-label>
+        {{ usuario?.telefone }}
+      </ion-label>
+    </ion-item>
+
+    <ion-item>
+      <ion-icon name="mail" item-start>
+      </ion-icon>
+      <ion-label>
+        {{ usuario?.email }}
+      </ion-label>
+    </ion-item>
+
+  </ion-list>
+
+</ion-content>

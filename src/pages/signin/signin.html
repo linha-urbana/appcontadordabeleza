@@ -1,0 +1,45 @@
+<!--
+  Generated template for the SigninPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-content padding>
+
+  <ion-grid>
+
+    <ion-row class="header-info">
+      <ion-col text-center>
+        <img class="logo" src="assets/imgs/logo.svg" alt="App Contador da Beleza">
+      </ion-col>
+    </ion-row>
+
+    <form #formData='ngForm' (ngSubmit)="onSubmit(formData)">
+      <ion-row align-items-center class="input-login">
+        <ion-col col-md-12 text-center>
+          <ion-item>
+            <ion-input type="email" (ngModel)="email" name="email" placeholder="Email" required></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-input type="password" (ngModel)="senha" name="senha" placeholder="Senha" required></ion-input>
+          </ion-item>
+          <hr>
+          <button ion-button block type="submit" [disabled]="!formData.valid">Entrar</button>
+        </ion-col>
+      </ion-row>
+    </form>
+
+    <ion-row class="other-options">
+      <ion-col col-md-6>
+        <a (click)="meCadastre()">
+          <ion-icon name="person-add"></ion-icon> Cadastre-se!</a>
+      </ion-col>
+      <ion-col col-md-6 text-right>
+        <a (click)="esqueciSenha()">
+          <ion-icon name="unlock"></ion-icon> Esqueceu a senha?</a>
+      </ion-col>
+    </ion-row>
+
+  </ion-grid>
+
+</ion-content>
