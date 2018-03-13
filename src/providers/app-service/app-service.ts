@@ -10,7 +10,7 @@ import { IMessage } from './i-message';
 @Injectable()
 export class AppServiceProvider {
 
-  private emailUrl = 'http://contadordabeleza.com.br/email/send-email.php';
+  private emailUrl = 'http://contadordabeleza.com.br/api/email/send-email.php';
 
   usuario: Usuario;
 

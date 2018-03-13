@@ -1,11 +1,13 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ActionSheetController, ToastController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ActionSheetController, ToastController, Platform } from 'ionic-angular';
 import { Categoria } from '../../models/categorias';
 import { Documento } from '../../models/documento';
 import { Observable } from 'rxjs';
 import { DocumentoServiceProvider } from '../../providers/documento-service/documento-service';
 import { SocialSharing } from '@ionic-native/social-sharing';
 import { ContactPage } from '../contact/contact';
+
+import { InAppBrowser } from '@ionic-native/in-app-browser';
 
 /**
  * Generated class for the ListDocumentsPage page.
@@ -32,7 +34,9 @@ export class ListDocumentsPage {
     private docService: DocumentoServiceProvider,
     public toastCtrl: ToastController,
     public actionsheetCtrl: ActionSheetController,
-    private socialSharing: SocialSharing) {
+    private socialSharing: SocialSharing,
+    private iab: InAppBrowser,
+    private platform: Platform) {
 
     this.categoria = navParams.get("categoria");
 
@@ -74,7 +78,23 @@ export class ListDocumentsPage {
   }
 
   baixarDocumento(doc: Documento) {
-    window.open(doc.url, 'location=no');
+    var url = doc.url;
+    if (this.platform.is('android')) {
+      if (url !== undefined && url !== null) {
+        if (url.toLowerCase() !== 'html') {
+          url = 'https://docs.google.com/viewer?url=' + encodeURIComponent(url);
+        }
+      }
+    } else {
+      url = encodeURIComponent(url);
+    }
+    const browser = this.iab.create(url, '_blank', 'location=no');
+    browser.on('loaderror').subscribe((sucess) => {
+      this.setMsg("Não foi possível abrir o arquivo.")
+    });
+    browser.on('loadstop').subscribe((sucess) => {
+      this.setMsg("Não foi possível abrir o arquivo.")
+    });
   }
 
   compartilharDocumento(doc: Documento) {

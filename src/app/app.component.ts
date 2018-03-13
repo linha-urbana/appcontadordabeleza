@@ -19,11 +19,6 @@ import { Categoria } from '../models/categorias';
 import { ProfilePage } from '../pages/profile/profile';
 import { AppServiceProvider } from '../providers/app-service/app-service';
 
-// declare var FCMPlugin;
-
-// Notificações de PUSH
-// import { Push, PushObject, PushOptions } from "@ionic-native/push";
-
 @Component({
   templateUrl: 'app.html'
 })
@@ -31,7 +26,7 @@ export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
   // Página de início do app
-  rootPage: any = HomePage;
+  rootPage: any;
 
   // Lista de opções do sidemenu
   paginas: Array<{ title: string, component: any, icone: any }>;
@@ -48,10 +43,8 @@ export class MyApp {
     private authService: AuthServiceProvider,
     private appService: AppServiceProvider,
     private splashScreen: SplashScreen,
-    // public push: Push,
     public alertCtrl: AlertController
   ) {
-
     this.initializeApp();
   }
 
@@ -59,21 +52,20 @@ export class MyApp {
   }
 
   initializeApp() {
-
     this.platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
       this.statusBar.styleDefault();
+      this.statusBar.backgroundColorByHexString("#38B5AF");
+      
       this.splashScreen.hide();
 
-      // this.pushsetup();
-      // this.onNotification();
-
       // Assim que o aplicativo estiver pronto, criamos um modal usando a página de splash e o iniciamos automaticamente. 
-      // let splash = this.modalCtrl.create(SplashPage);
-      // splash.present();
-
-      this.statusBar.backgroundColorByHexString("#38B5AF");
+      let splashCustom = this.modalCtrl.create(SplashPage);
+      splashCustom.onDidDismiss(data => {
+        this.rootPage = HomePage;
+      });
+      splashCustom.present();
     });
 
     // Vamos inscrever este componente ao usuário do app para atualizar
@@ -106,112 +98,6 @@ export class MyApp {
       { title: 'Termos de Uso', component: TermsPage, icone: 'termos-uso' },
     ]
   }
-
-  // onNotification() {
-  //   console.log('onNotification');
-  //   try {
-  //     if (this.platform.is('android') || this.platform.is('ios') && (typeof (FCMPlugin) != 'undefined')) {
-
-  //       FCMPlugin.getToken((token) => {
-  //         console.log('Token: ', token);
-  //       }, (error) => {
-  //         console.log('error retrieving token: ' + error);
-  //       });
-
-  //       FCMPlugin.onNotification(function (data) {
-  //         console.log('FCMPlugin.onNotification');
-
-  //         if (data.wasTapped) {
-  //           //Notification was received on device tray and tapped by the user.
-  //           console.log("Received in background: ", JSON.stringify(data));
-  //           this.nav.push(ListDocumentsPage, { message: data.message });
-  //         } else {
-  //           //Notification was received in foreground. Maybe the user needs to be notified.
-  //           console.log("Received in foreground: ", JSON.stringify(data));
-  //           let youralert = this.alertCtrl.create({
-  //             title: data.label,
-  //             message: data.message,
-  //             buttons: [
-  //               {
-  //                 text: 'Ignorar',
-  //                 role: 'cancel'
-  //               },
-  //               {
-  //                 text: 'Visualizar',
-  //                 handler: () => {
-  //                   //TODO: Your logic here
-  //                   this.nav.push(ListDocumentsPage, { message: data.message });
-  //                 }
-  //               }]
-  //           });
-  //           youralert.present();
-  //         }
-  //       }, (error) => console.error('error onNotification: ', error));
-  //     }
-  //   }
-  //   catch (e) {
-  //     console.error('error FCMPlugin: ', e);
-  //   }
-  // }
-
-  // pushsetup() {
-  //   const options: PushOptions = {
-  //     android: {
-  //       senderID: '971556206505',
-  //       forceShow: true,
-  //       icon: 'icon',
-  //       sound: true,
-  //       vibrate: true
-  //     },
-  //     ios: {
-  //       alert: true,
-  //       badge: false,
-  //       sound: true
-  //     },
-  //     windows: {}
-  //   };
-
-  //   const pushObject: PushObject = this.push.init(options);
-
-  //   // Aqui estamos dando um subscribe para quando um notificação for enviada o nosso app receber e apresentar ela.
-  //   pushObject.on("notification").subscribe((notification: any) => {
-  //     // Se a notificação foi recebida enquanto o aplicativo estava em primeiro plano
-  //     this.nav.push(ListDocumentsPage, { message: notification.message });
-  //     // if (notification.additionalData.foreground) {
-  //     //   let youralert = this.alertCtrl.create({
-  //     //     title: notification.label,
-  //     //     message: notification.message,
-  //     //     buttons: [{
-  //     //       text: 'Ignorar',
-  //     //       role: 'cancel'
-  //     //     }, {
-  //     //       text: 'Visualizar',
-  //     //       handler: () => {
-  //     //         //TODO: Your logic here
-  //     //         this.nav.push(ListDocumentsPage, { message: notification.message });
-  //     //         // this.rootPage = ListDocumentsPage;
-  //     //       }
-  //     //     }]
-  //     //   });
-  //     //   youralert.present();
-  //     // }
-  //     // else {
-  //     //   //if user NOT using app and push notification comes
-  //     //   //TODO: Your logic on click of push notification directly
-  //     //   this.nav.push(ListDocumentsPage, { message: notification.message });
-  //     //   // this.rootPage = ListDocumentsPage;
-  //     //   console.log('Push notification clicked');
-  //     // }
-  //   });
-
-  //   // Registrando o device no console do Firebase.
-  //   pushObject.on('registration').subscribe((data: any) => {
-  //     console.log('device token -> ' + data.registrationId);
-  //     //TODO - send device token to server
-  //   });
-
-  //   pushObject.on('error').subscribe(error => console.error('Error with Push plugin' + error));
-  // }
 
   // Quando clicamos em alguma página do sidemenu
   openPage(page) {

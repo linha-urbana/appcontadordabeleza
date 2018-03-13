@@ -1,0 +1,39 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Atualizar email</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+  <ion-grid>
+    <form #formData='ngForm' (ngSubmit)="onSubmit(formData)">
+      <ion-row align-items-center>
+        <ion-col col-md-12 text-center>
+          <h4>Atualize seu endereço de email cadastrado.</h4>
+          <ion-item>
+            <ion-label color="cinzaClaro" floating>Seu email atual</ion-label>
+            <ion-input type="email" [disabled]="true" value="{{ usuario?.email }}" name="current_email" required></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label color="cinzaClaro" floating>Digite sua senha</ion-label>
+            <ion-input type="password" [(ngModel)]="password" name="password" required></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label color="cinzaClaro" floating>Digite o novo email</ion-label>
+            <ion-input type="email" [(ngModel)]="new_email" name="new_email" required></ion-input>
+          </ion-item>
+          <br>
+          <ion-item>
+            <ion-label color="cinzaClaro" floating>Digite o novo email</ion-label>
+            <ion-input type="email" [(ngModel)]="confirm_email" name="confirm_email" required></ion-input>
+          </ion-item>
+          <br>
+          <hr>
+          <button ion-button block type="submit" [disabled]="!formData.valid">Atualizar email</button>
+        </ion-col>
+      </ion-row>
+    </form>
+  </ion-grid>
+</ion-content>

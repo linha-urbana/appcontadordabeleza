@@ -9,6 +9,7 @@ Aplicativo de contabilidade simples e prática para salões e profissionais de b
 - Ionic 3 Framework
 - Angular 5
 - Firebase
+<<<<<<< HEAD
 
 # Principais Features
 - Leitura de arquivos PDF
@@ -18,3 +19,5 @@ Aplicativo de contabilidade simples e prática para salões e profissionais de b
 - Envio de mensagem por email
 - Notificação via Push de Vencimento de Impostos 
 - Notificação por email de Novos Clientes à Dashboard
+=======
+>>>>>>> 6b6c56f578412e1324aa43690be1a10224aaff08

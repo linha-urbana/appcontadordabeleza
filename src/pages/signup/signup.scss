@@ -19,4 +19,24 @@ page-signup {
     .header-info {
         margin-top: 20px
     }
+    .terms {
+        background-color: transparent;
+    }
+    .terms .item-inner {
+        border-bottom: none!important;
+    }
+
+    .conditions{
+        padding: 12px;
+        text-align: left;
+    }
+    .conditions ion-checkbox {
+        float: left;
+        margin-right: 8px;
+    }
+    
+    .conditions ion-label {
+        // float: left;
+        display: inline;
+    }
 }

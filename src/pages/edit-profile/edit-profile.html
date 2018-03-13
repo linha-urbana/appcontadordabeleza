@@ -54,8 +54,11 @@
             <ion-input type="text" mask="99999-999" [(ngModel)]="usuario.cep" name="cep" placeholder="CEP" required></ion-input>
           </ion-item>
           <br>
+          <button ion-button block type="submit" [disabled]="!formData.valid">Atualizar perfil</button>
+          <br>
           <hr>
-          <button ion-button block type="submit" [disabled]="!formData.valid">Atualizar</button>
+          <button ion-button block (click)="openChangeEmail()">Alterar email</button>
+          <button ion-button block (click)="openChangePassword()">Alterar senha</button>
         </ion-col>
       </ion-row>
     </form>

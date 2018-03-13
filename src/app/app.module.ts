@@ -46,6 +46,9 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { Push } from '@ionic-native/push';
 import { MessagePushPageModule } from '../pages/message-push/message-push.module';
+import { InAppBrowser } from '@ionic-native/in-app-browser';
+import { UpdateEmailPageModule } from '../pages/update-email/update-email.module';
+import { UpdatePasswordPageModule } from '../pages/update-password/update-password.module';
 
 @NgModule({
   declarations: [
@@ -83,7 +86,9 @@ import { MessagePushPageModule } from '../pages/message-push/message-push.module
     SigninPageModule,
     SignupPageModule,
     TermsPageModule,
-    MessagePushPageModule
+    MessagePushPageModule,
+    UpdateEmailPageModule,
+    UpdatePasswordPageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -112,7 +117,8 @@ import { MessagePushPageModule } from '../pages/message-push/message-push.module
     SocialSharing,
     AppServiceProvider,
     WebServiceProvider,
-    Push
+    Push,
+    InAppBrowser 
   ]
 })
 export class AppModule {}

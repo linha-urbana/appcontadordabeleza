@@ -4,6 +4,8 @@ import { Usuario } from '../../models/usuario';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 import { UsuarioServiceProvider } from '../../providers/usuario-service/usuario-service';
+import { IMessage } from '../../providers/app-service/i-message';
+import { TermsPage } from '../terms/terms';
 
 @IonicPage()
 @Component({
@@ -11,6 +13,9 @@ import { UsuarioServiceProvider } from '../../providers/usuario-service/usuario-
   templateUrl: 'signup.html',
 })
 export class SignupPage {
+
+  usuario: Usuario;
+  terms_check: boolean = true;
 
   constructor(
     public navCtrl: NavController,
@@ -34,18 +39,16 @@ export class SignupPage {
           console.log('Conseguiu cadastrar meu login');
           var mySubscribe = this.userService.getItemByEmail(
             formData.value.email
-          ).subscribe(items => {
-            var usuario: Usuario;
-            
+          ).subscribe(items => {           
             if (items.length > 0) {
               console.log('Já fui cadastrado');
               // Já fui cadastrado? Então carregue meus dados para o usuário atual do sistema
               // ** Como é somente um usuário por email, então poupamos loops **
-              usuario = items[0].userJson as Usuario;
-              usuario.$key = items[0].key;
+              this.usuario = items[0].userJson as Usuario;
+              this.usuario.$key = items[0].key;
 
               // Antes de me redirecionar, verifique se sou um cliente ou funcionário
-              if (!usuario.isFuncionario) {
+              if (!this.usuario.isFuncionario) {
                 console.log('Eu não sou um funcionário');
                 // Eu não sou um funcionário, então me redirecione para a tela inicial
                 this.cadastreiComSucesso();
@@ -64,13 +67,13 @@ export class SignupPage {
             else {
               console.log('Ainda não fui cadastrado');
               // Ainda não fui cadastrado? Então por gentileza salve meus dados no banco
-              usuario = new Usuario();
-              usuario.email = formData.value.email;
-              usuario.nome = formData.value.nome;
-              usuario.telefone = formData.value.telefone;
-              usuario.isFuncionario = false;
+              this.usuario = new Usuario();
+              this.usuario.email = formData.value.email;
+              this.usuario.nome = formData.value.nome;
+              this.usuario.telefone = formData.value.telefone;
+              this.usuario.isFuncionario = false;
 
-              this.userService.createItem(usuario)
+              this.userService.createItem(this.usuario)
                 .then((sucess) => {
                   console.log('Sucess: ', sucess);
                   this.cadastreiComSucesso();
@@ -101,9 +104,23 @@ export class SignupPage {
 
   cadastreiComSucesso() {
     console.log('cadastreiComSucesso')
+    this.enviarEmail();
     this.authService.signOut();
     this.setMsg("Parabéns! Seu cadastro foi realizado com sucesso.");
     this.navCtrl.pop();
+  }
+
+  enviarEmail(){
+    // // Capture as informações do formulário
+    // var message: IMessage = {
+    //   name: this.usuario.nome,
+    //   phone: this.usuario.telefone,
+    //   email: this.usuario.email,
+    //   message: formData.value.mensagem,
+    // };
+
+    // // Envie o email desejado
+    // this.sendEmail(message);
   }
 
   // Desloga o usuário e exclui seu login
@@ -133,4 +150,7 @@ export class SignupPage {
     console.log('ionViewDidLoad SignupPage');
   }
 
+  openTermsAccept() {
+    this.navCtrl.push(TermsPage);
+  }
 }

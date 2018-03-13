@@ -31,7 +31,8 @@
             <ion-input type="text" (ngModel)="usuario?.nome" name="nome" placeholder="Qual seu nome?" required></ion-input>
           </ion-item>
           <ion-item>
-            <ion-input type="text" mask="(99) 99999-9999" (ngModel)="usuario?.telefone" name="telefone" placeholder="Telefone principal" required></ion-input>
+            <ion-input type="text" mask="(99) 99999-9999" (ngModel)="usuario?.telefone" name="telefone" placeholder="Telefone principal"
+              required></ion-input>
           </ion-item>
           <ion-item>
             <ion-input type="email" (ngModel)="usuario?.email" name="email" placeholder="Email favorito" required></ion-input>
@@ -39,8 +40,12 @@
           <ion-item>
             <ion-input type="password" (ngModel)="usuario?.senha" name="senha" placeholder="Digite uma senha forte" required></ion-input>
           </ion-item>
+          <div class="conditions">
+              <ion-checkbox [(ngModel)]="terms_check" name="terms_check" color="cinzaClaro"></ion-checkbox>
+              <ion-label>Aceito os <a (click)="openTermsAccept()"><strong>termos de uso</strong></a>.</ion-label>
+          </div>
           <hr>
-          <button ion-button block type="submit" [disabled]="!formData.valid">Cadastrar</button>
+          <button ion-button block type="submit" [disabled]="!formData.valid || !terms_check">Cadastrar</button>
         </ion-col>
       </ion-row>
     </form>

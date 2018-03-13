@@ -5,6 +5,8 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AppServiceProvider } from '../../providers/app-service/app-service';
 import { AlertController } from 'ionic-angular';
 import { UsuarioServiceProvider } from '../../providers/usuario-service/usuario-service';
+import { UpdateEmailPage } from '../update-email/update-email';
+import { UpdatePasswordPage } from '../update-password/update-password';
 
 @IonicPage()
 @Component({
@@ -64,5 +66,11 @@ export class EditProfilePage {
     toast.present();
   }
 
+  openChangeEmail() {
+    this.navCtrl.push(UpdateEmailPage);
+  }
+  openChangePassword() {
+    this.navCtrl.push(UpdatePasswordPage);
+  }
 
 }

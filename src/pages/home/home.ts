@@ -12,6 +12,7 @@ import { Usuario } from '../../models/usuario';
 import { ContactPage } from '../contact/contact';
 import { NewsPage } from '../news/news';
 import { MessagePushPage } from '../message-push/message-push';
+import { InAppBrowser } from '@ionic-native/in-app-browser';
 
 declare var FCMPlugin;
 
@@ -36,7 +37,8 @@ export class HomePage {
     private userService: UsuarioServiceProvider,
     // private fcm: FCM,
     private alertCtrl: AlertController,
-    private platform: Platform
+    private platform: Platform,
+    private iab: InAppBrowser
   ) {
 
     // Atualize minha lista de opções com as categorias e subcategorias fornecidas.
@@ -158,6 +160,13 @@ export class HomePage {
           mySubscribe.unsubscribe();
         }
       });
+  }
+
+  openChat(){
+    var url = 'javascript:jivo_api.open();';
+    // const browser = this.iab.create(doc.url, '_self', 'location=no');
+    this.iab.create(url, '_self', 'location=no');
+    // window.open(doc.url, 'location=no');
   }
 
   abraArquivos(cat: Categoria) {

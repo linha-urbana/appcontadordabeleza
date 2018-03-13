@@ -35,9 +35,9 @@
     </ion-list>
     <ion-list>
       <h6 class="subtitle-sidemenu">Informações e Contato</h6>
-      <a menuClose ion-item href="javascript:jivo_api.open();">
+      <!-- <a menuClose ion-item href="javascript:jivo_api.open();">
         <img src="assets/icon/sidemenu/chat.svg" alt="Chat"> Chat
-      </a>
+      </a> -->
       <button menuClose ion-item *ngFor="let pagina of links_uteis" (click)="openPage(pagina)">
         <img src="assets/icon/sidemenu/{{ pagina.icone }}.svg" alt="{{ pagina.title }}"> {{ pagina.title }}
       </button>
